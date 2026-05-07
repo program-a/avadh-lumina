@@ -78,7 +78,7 @@ function Nav() {
         scrolled ? "py-4 bg-ivory/80 backdrop-blur-md border-b border-border/60" : "py-7"
       }`}
     >
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12 flex items-center justify-between">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12 flex items-center justify-between gap-4">
         <a href="#top" className="flex items-baseline gap-2">
           <span className="font-serif text-xl tracking-tight">Avadh</span>
           <span className="label-eyebrow text-charcoal/50 hidden sm:inline">— Food & Beverages</span>
@@ -107,7 +107,7 @@ function Hero() {
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
-    <section id="top" className="relative min-h-[100svh] overflow-hidden pt-32 md:pt-40 pb-24">
+    <section id="top" className="relative min-h-[100svh] overflow-hidden pt-28 md:pt-40 pb-20 md:pb-24">
       {/* floating gradient blobs */}
       <motion.div
         aria-hidden
@@ -138,17 +138,17 @@ function Hero() {
           initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.8 }} />
       </svg>
 
-      <div className="relative mx-auto max-w-[1500px] px-6 md:px-12 grid grid-cols-12 gap-6">
+      <div className="relative mx-auto max-w-[1500px] px-5 md:px-12 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-7 flex flex-col">
           <Reveal>
             <Eyebrow>Gurgaon · Est. since the love of food</Eyebrow>
           </Reveal>
-          <h1 className="editorial-h mt-10 text-[clamp(3rem,9vw,9rem)] text-charcoal">
+          <h1 className="editorial-h mt-8 md:mt-10 text-[clamp(2.75rem,11vw,9rem)] text-charcoal leading-[0.95]">
             <SplitWord text="Crafted by" />
             <br />
             <SplitWord text="Passion." className="italic font-light" delay={0.15} />
             <br />
-            <span className="block ml-[12%] md:ml-[28%]">
+            <span className="block ml-[8%] md:ml-[28%]">
               <SplitWord text="Inspired by" delay={0.35} />{" "}
               <SplitWord text="Taste." className="text-crimson italic" delay={0.5} />
             </span>
@@ -157,7 +157,7 @@ function Hero() {
 
         <motion.div
           style={{ y: y1 }}
-          className="col-span-12 md:col-span-5 mt-12 md:mt-24 relative"
+          className="col-span-12 md:col-span-5 mt-10 md:mt-24 relative"
         >
           <div className="relative aspect-[3/4] overflow-hidden">
             <motion.img
@@ -171,9 +171,9 @@ function Hero() {
           </div>
           <motion.div
             style={{ y: y2 }}
-            className="absolute -left-8 md:-left-16 bottom-10 max-w-[16rem] bg-ivory/90 backdrop-blur-sm p-6 border-l border-crimson/60"
+            className="absolute left-2 md:-left-16 bottom-6 md:bottom-10 max-w-[14rem] md:max-w-[16rem] bg-ivory/90 backdrop-blur-sm p-5 md:p-6 border-l border-crimson/60"
           >
-            <p className="font-serif italic text-lg leading-snug">
+            <p className="font-serif italic text-base md:text-lg leading-snug">
               "We do not run restaurants. We compose meals."
             </p>
             <p className="label-eyebrow mt-3 text-charcoal/60">— The House of Avadh</p>
@@ -203,14 +203,14 @@ function Ticker() {
   const items = ["Asian Kitchen Bokchoy", "·", "Swooshi", "·", "Lil Buns", "·", "Crafted in Gurgaon", "·"];
   const row = [...items, ...items, ...items];
   return (
-    <div className="border-y border-border py-5 overflow-hidden bg-cream/50">
+    <div className="border-y border-border py-4 md:py-5 overflow-hidden bg-cream/50">
       <motion.div
-        className="flex gap-12 whitespace-nowrap"
+        className="flex gap-8 md:gap-12 whitespace-nowrap"
         animate={{ x: ["0%", "-33.333%"] }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
       >
         {row.map((t, i) => (
-          <span key={i} className="font-serif text-2xl md:text-3xl italic text-charcoal/70">
+          <span key={i} className="font-serif text-xl md:text-3xl italic text-charcoal/70">
             {t}
           </span>
         ))}
@@ -231,11 +231,11 @@ function House() {
     ["v.", "Today — three brands, one house, one obsession."],
   ];
   return (
-    <section id="house" className="relative py-32 md:py-48">
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12 grid grid-cols-12 gap-6">
+    <section id="house" className="relative py-24 md:py-48">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-5 md:sticky md:top-32 self-start">
           <Reveal><Eyebrow>The House</Eyebrow></Reveal>
-          <h2 className="editorial-h mt-8 text-[clamp(2.5rem,6vw,5.5rem)]">
+          <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,8vw,5.5rem)] leading-[0.95]">
             <SplitWord text="A quiet" />
             <br />
             <SplitWord text="culinary" className="italic" delay={0.1} />
@@ -251,8 +251,8 @@ function House() {
           </Reveal>
         </div>
 
-        <div className="col-span-12 md:col-span-7 md:col-start-7">
-          <div className="relative aspect-[4/5] overflow-hidden mb-16">
+        <div className="col-span-12 md:col-span-7 md:col-start-7 mt-12 md:mt-0">
+          <div className="relative aspect-[4/5] overflow-hidden mb-12 md:mb-16">
             <motion.img
               src={founderImg}
               alt="Founder portrait in soft window light."
@@ -265,12 +265,12 @@ function House() {
             />
           </div>
 
-          <ol className="space-y-10 border-l border-border pl-8 ml-2">
+          <ol className="space-y-8 md:space-y-10 border-l border-border pl-5 md:pl-8 ml-1 md:ml-2">
             {timeline.map(([n, t], i) => (
               <Reveal key={i} delay={i * 0.05}>
-                <li className="grid grid-cols-[3rem_1fr] gap-6 items-baseline">
+                <li className="grid grid-cols-[2rem_1fr] md:grid-cols-[3rem_1fr] gap-4 md:gap-6 items-baseline">
                   <span className="label-eyebrow text-crimson">{n}</span>
-                  <p className="font-serif text-xl md:text-2xl leading-snug text-charcoal/85">{t}</p>
+                  <p className="font-serif text-lg md:text-2xl leading-snug text-charcoal/85">{t}</p>
                 </li>
               </Reveal>
             ))}
@@ -302,8 +302,8 @@ function BrandChapter({ index, name, tagline, copy, img, motif, align, accent, r
   const imgY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   return (
-    <div ref={ref} className="relative py-32 md:py-48 overflow-hidden">
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12 grid grid-cols-12 gap-6 items-center">
+    <div ref={ref} className="relative py-24 md:py-48 overflow-hidden">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12 grid grid-cols-12 gap-6 md:gap-10 items-center">
         <div
           className={`col-span-12 md:col-span-6 ${
             align === "right" ? "md:col-start-7 md:order-2" : ""
@@ -322,24 +322,24 @@ function BrandChapter({ index, name, tagline, copy, img, motif, align, accent, r
                 loading="lazy"
               />
             </div>
-            <div className="absolute -top-8 -right-8 w-32 h-32 opacity-50 text-charcoal">{motif}</div>
+            <div className="absolute -top-6 -right-4 md:-top-8 md:-right-8 w-20 h-20 md:w-32 md:h-32 opacity-50 text-charcoal">{motif}</div>
           </motion.div>
         </div>
 
         <motion.div
           style={{ y }}
-          className={`col-span-12 md:col-span-5 ${
+          className={`col-span-12 md:col-span-5 mt-10 md:mt-0 ${
             align === "right" ? "md:col-start-1 md:order-1" : "md:col-start-8"
           }`}
         >
           <Reveal>
             <Eyebrow>{`Brand ${index} · House of Avadh`}</Eyebrow>
           </Reveal>
-          <h3 className={`editorial-h mt-6 text-[clamp(3rem,8vw,7rem)] ${accent ? "text-crimson" : ""}`}>
+          <h3 className={`editorial-h mt-5 md:mt-6 text-[clamp(2.75rem,11vw,7rem)] leading-[0.95] ${accent ? "text-crimson" : ""}`}>
             <SplitWord text={name} />
           </h3>
           <Reveal delay={0.2}>
-            <p className="font-serif italic text-2xl md:text-3xl mt-6 text-charcoal/80 max-w-md">
+            <p className="font-serif italic text-xl md:text-3xl mt-5 md:mt-6 text-charcoal/80 max-w-md">
               {tagline}
             </p>
           </Reveal>
@@ -364,10 +364,10 @@ function BrandChapter({ index, name, tagline, copy, img, motif, align, accent, r
 function Brands() {
   return (
     <section id="brands" className="relative">
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12 pt-32 pb-12">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12 pt-24 md:pt-32 pb-8 md:pb-12">
         <Reveal><Eyebrow>Three Kitchens</Eyebrow></Reveal>
         <Reveal delay={0.1}>
-          <h2 className="editorial-h mt-8 text-[clamp(3rem,9vw,8rem)] max-w-5xl">
+          <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.75rem,11vw,8rem)] leading-[0.95] max-w-5xl">
             One <span className="italic">house.</span>
             <br />
             Three <span className="text-crimson italic">grammars.</span>
@@ -456,14 +456,14 @@ function Brands() {
 
 function Vision() {
   return (
-    <section id="vision" className="relative py-40 md:py-56 bg-cream/60 border-y border-border">
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12">
+    <section id="vision" className="relative py-28 md:py-56 bg-cream/60 border-y border-border">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12">
         <Reveal><Eyebrow className="block mx-auto text-center">Mission · Vision</Eyebrow></Reveal>
 
-        <div className="mt-20 grid grid-cols-12 gap-6">
+        <div className="mt-12 md:mt-20 grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-10 md:col-start-2">
             <Reveal delay={0.1}>
-              <p className="editorial-h text-[clamp(2rem,5vw,4.5rem)] text-balance">
+              <p className="editorial-h text-[clamp(1.75rem,6vw,4.5rem)] leading-[1.1] text-balance">
                 We believe a meal is a quiet conversation between
                 <span className="text-crimson italic"> the hand that grew it </span>
                 and the hand that <span className="italic">received it</span>.
@@ -472,7 +472,7 @@ function Vision() {
           </div>
         </div>
 
-        <div className="mt-32 grid grid-cols-12 gap-12">
+        <div className="mt-16 md:mt-32 grid grid-cols-12 gap-10 md:gap-12">
           {[
             ["Mission", "To compose food the way one composes music — with patience, with intention, with one ingredient at a time."],
             ["Vision", "A house of small, perfect kitchens — each a quiet rebellion against the loud, the fast and the forgettable."],
@@ -483,7 +483,7 @@ function Vision() {
             >
               <Reveal delay={i * 0.15}>
                 <span className="label-eyebrow text-crimson">{title}</span>
-                <p className="font-serif text-2xl md:text-3xl leading-snug mt-6 text-charcoal/85">
+                <p className="font-serif text-xl md:text-3xl leading-snug mt-5 md:mt-6 text-charcoal/85">
                   {body}
                 </p>
               </Reveal>
@@ -505,27 +505,29 @@ function Why() {
     ["04", "No shortcuts", "We have never used a microwave. We never will."],
   ];
   return (
-    <section className="relative py-32 md:py-48">
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12">
+    <section className="relative py-24 md:py-48">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12">
         <div className="grid grid-cols-12 gap-6">
-          <Reveal>
-            <div className="col-span-12 md:col-span-4 md:sticky md:top-32 self-start">
+          <div className="col-span-12 md:col-span-4 md:sticky md:top-32 self-start">
+            <Reveal>
+              <>
               <Eyebrow>Why Avadh</Eyebrow>
-              <h2 className="editorial-h mt-8 text-[clamp(2.5rem,6vw,5rem)]">
+              <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,8vw,5rem)] leading-[0.95]">
                 Four <span className="italic">quiet</span> obsessions.
               </h2>
-            </div>
-          </Reveal>
-          <div className="col-span-12 md:col-span-7 md:col-start-6 space-y-2">
+              </>
+            </Reveal>
+          </div>
+          <div className="col-span-12 md:col-span-7 md:col-start-6 space-y-2 mt-8 md:mt-0">
             {items.map(([n, t, b], i) => (
               <Reveal key={n} delay={i * 0.08}>
-                <article className="group grid grid-cols-[4rem_1fr] gap-8 py-10 border-t border-border last:border-b transition-colors hover:bg-cream/40 px-2 -mx-2">
+                <article className="group grid grid-cols-[3rem_1fr] md:grid-cols-[4rem_1fr] gap-5 md:gap-8 py-8 md:py-10 border-t border-border last:border-b transition-colors hover:bg-cream/40 px-2 -mx-2">
                   <span className="label-eyebrow text-crimson pt-2">{n}</span>
                   <div>
-                    <h3 className="font-serif text-3xl md:text-4xl group-hover:translate-x-2 transition-transform duration-700">
+                    <h3 className="font-serif text-2xl md:text-4xl group-hover:translate-x-2 transition-transform duration-700">
                       {t}
                     </h3>
-                    <p className="mt-4 text-charcoal/65 max-w-lg leading-[1.8]">{b}</p>
+                    <p className="mt-3 md:mt-4 text-charcoal/65 max-w-lg leading-[1.7] md:leading-[1.8]">{b}</p>
                   </div>
                 </article>
               </Reveal>
@@ -541,18 +543,18 @@ function Why() {
 
 function Contact() {
   return (
-    <section id="contact" className="relative pt-40 pb-16">
-      <div className="mx-auto max-w-[1500px] px-6 md:px-12">
+    <section id="contact" className="relative pt-28 md:pt-40 pb-12 md:pb-16">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12">
         <Reveal><Eyebrow>Contact · Studio</Eyebrow></Reveal>
         <Reveal delay={0.1}>
-          <h2 className="editorial-h mt-8 text-[clamp(3.5rem,12vw,12rem)] leading-[0.85]">
+          <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(3rem,16vw,12rem)] leading-[0.85]">
             Let us
             <br />
             <span className="italic text-crimson">cook</span> for you.
           </h2>
         </Reveal>
 
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-16">
+        <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 border-t border-border pt-12 md:pt-16">
           {[
             ["Studio", "Sector 53, Golf Course Road\nGurgaon, India 122003"],
             ["Reservations", "reserve@avadhfb.com\n+91 124 000 0000"],
@@ -561,14 +563,14 @@ function Contact() {
             <div key={t}>
               <Reveal delay={i * 0.1}>
                 <span className="label-eyebrow text-charcoal/60">{t}</span>
-                <p className="font-serif text-2xl mt-4 whitespace-pre-line leading-snug">{b}</p>
+                <p className="font-serif text-xl md:text-2xl mt-3 md:mt-4 whitespace-pre-line leading-snug break-words">{b}</p>
               </Reveal>
             </div>
           ))}
         </div>
 
-        <div className="mt-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8 border-t border-border pt-8">
-          <p className="font-serif italic text-xl text-charcoal/70">
+        <div className="mt-16 md:mt-24 flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 border-t border-border pt-8">
+          <p className="font-serif italic text-lg md:text-xl text-charcoal/70">
             Avadh — composed in Gurgaon, served quietly.
           </p>
           <p className="label-eyebrow text-charcoal/50">© {new Date().getFullYear()} Avadh F&B</p>
@@ -582,7 +584,7 @@ function Contact() {
 
 export default function Site() {
   return (
-    <div className="grain min-h-screen bg-ivory text-charcoal antialiased">
+    <div className="grain min-h-screen bg-ivory text-charcoal antialiased overflow-x-hidden">
       <Nav />
       <main>
         <Hero />
