@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import heroFood from "@/assets/hero-food.jpg";
 import bokchoyImg from "@/assets/bokchoy.jpg";
 import swooshiImg from "@/assets/swooshi.jpg";
