@@ -461,13 +461,15 @@ function Vision() {
         <Reveal><Eyebrow className="block mx-auto text-center">Mission · Vision</Eyebrow></Reveal>
 
         <div className="mt-20 grid grid-cols-12 gap-6">
-          <Reveal delay={0.1}>
-            <p className="col-span-12 md:col-span-8 md:col-start-2 editorial-h text-[clamp(2rem,5vw,4.5rem)] text-balance">
-              We believe a meal is a quiet conversation between
-              <span className="text-crimson italic"> the hand that grew it </span>
-              and the hand that <span className="italic">received it</span>.
-            </p>
-          </Reveal>
+          <div className="col-span-12 md:col-span-10 md:col-start-2">
+            <Reveal delay={0.1}>
+              <p className="editorial-h text-[clamp(2rem,5vw,4.5rem)] text-balance">
+                We believe a meal is a quiet conversation between
+                <span className="text-crimson italic"> the hand that grew it </span>
+                and the hand that <span className="italic">received it</span>.
+              </p>
+            </Reveal>
+          </div>
         </div>
 
         <div className="mt-32 grid grid-cols-12 gap-12">
@@ -475,14 +477,17 @@ function Vision() {
             ["Mission", "To compose food the way one composes music — with patience, with intention, with one ingredient at a time."],
             ["Vision", "A house of small, perfect kitchens — each a quiet rebellion against the loud, the fast and the forgettable."],
           ].map(([title, body], i) => (
-            <Reveal key={title} delay={i * 0.15}>
-              <div className={`col-span-12 md:col-span-5 ${i === 1 ? "md:col-start-8 md:mt-32" : "md:col-start-2"}`}>
+            <div
+              key={title}
+              className={`col-span-12 md:col-span-5 ${i === 1 ? "md:col-start-8 md:mt-32" : "md:col-start-2"}`}
+            >
+              <Reveal delay={i * 0.15}>
                 <span className="label-eyebrow text-crimson">{title}</span>
                 <p className="font-serif text-2xl md:text-3xl leading-snug mt-6 text-charcoal/85">
                   {body}
                 </p>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           ))}
         </div>
       </div>
@@ -547,18 +552,18 @@ function Contact() {
           </h2>
         </Reveal>
 
-        <div className="mt-24 grid grid-cols-12 gap-6 border-t border-border pt-16">
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-16">
           {[
             ["Studio", "Sector 53, Golf Course Road\nGurgaon, India 122003"],
             ["Reservations", "reserve@avadhfb.com\n+91 124 000 0000"],
             ["Press & Partnerships", "studio@avadhfb.com"],
-          ].map(([t, b]) => (
-            <Reveal key={t}>
-              <div className="col-span-12 md:col-span-4">
+          ].map(([t, b], i) => (
+            <div key={t}>
+              <Reveal delay={i * 0.1}>
                 <span className="label-eyebrow text-charcoal/60">{t}</span>
                 <p className="font-serif text-2xl mt-4 whitespace-pre-line leading-snug">{b}</p>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           ))}
         </div>
 
