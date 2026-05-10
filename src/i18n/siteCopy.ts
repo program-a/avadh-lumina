@@ -14,6 +14,9 @@ const messages = {
   "nav.why": "Why Choose Us",
   "nav.brands": "Our Brands",
   "nav.contact": "Contact Us",
+  "nav.openMenu": "Open menu",
+  "nav.closeMenu": "Close menu",
+  "nav.menuTitle": "Site navigation",
 
   "home.title": "Avadh Food and Beverages",
   "home.tagline": "Crafted by Passion. Inspired by Taste.",

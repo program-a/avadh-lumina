@@ -6,6 +6,8 @@ import swooshiImg from "@/assets/swooshi.jpg";
 import lilbunsImg from "@/assets/lilbuns.jpg";
 import type { SiteMessageKey } from "@/i18n/siteCopy";
 import { t } from "@/i18n/siteCopy";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 
 /* ---------- shared atoms ---------- */
 
@@ -69,6 +71,7 @@ function ParagraphBlock({ keys }: { keys: readonly SiteMessageKey[] }) {
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
@@ -81,6 +84,7 @@ function Nav() {
     ["nav.why", "#why"],
     ["nav.brands", "#brands"],
   ];
+  const mobileLinks: [SiteMessageKey, string][] = [...links, ["nav.contact", "#contact"]];
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
@@ -91,19 +95,57 @@ function Nav() {
       }`}
     >
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 flex items-center justify-between gap-4">
-        <a href="#top" className="flex items-baseline gap-2">
-          <span className="font-serif text-xl tracking-tight">{t("brand.short")}</span>
+        <a href="#top" className="flex items-baseline gap-2 min-w-0">
+          <span className="font-serif text-xl tracking-tight truncate">{t("brand.short")}</span>
         </a>
-        <nav className="hidden lg:flex items-center gap-8 flex-wrap justify-end">
-          {links.map(([k, h]) => (
-            <a key={k} href={h} className="label-eyebrow text-charcoal/70 hover:text-crimson transition-colors">
-              {t(k)}
-            </a>
-          ))}
-        </nav>
-        <a href="#contact" className="label-eyebrow text-charcoal hover:text-crimson transition-colors shrink-0">
-          {t("nav.contact")}
-        </a>
+        <div className="flex items-center gap-3 shrink-0">
+          <nav className="hidden lg:flex items-center gap-8 flex-wrap justify-end" aria-label={t("nav.menuTitle")}>
+            {links.map(([k, h]) => (
+              <a key={k} href={h} className="label-eyebrow text-charcoal/70 hover:text-crimson transition-colors">
+                {t(k)}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="#contact"
+            className="hidden lg:inline-flex label-eyebrow text-charcoal hover:text-crimson transition-colors"
+          >
+            {t("nav.contact")}
+          </a>
+
+          <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/80 bg-ivory/90 text-charcoal hover:bg-cream/80 hover:text-crimson transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/40"
+                aria-expanded={mobileNavOpen}
+                aria-controls="mobile-site-nav"
+                aria-label={t("nav.openMenu")}
+              >
+                <Menu className="h-6 w-6" strokeWidth={1.5} aria-hidden />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              closeAriaLabel={t("nav.closeMenu")}
+              className="bg-ivory border-border !w-[min(100vw-1.5rem,22rem)] sm:!max-w-[22rem]"
+            >
+              <SheetTitle className="sr-only">{t("nav.menuTitle")}</SheetTitle>
+              <nav id="mobile-site-nav" className="flex flex-col gap-1 pt-8">
+                {mobileLinks.map(([k, h]) => (
+                  <a
+                    key={k}
+                    href={h}
+                    className="label-eyebrow py-3 text-charcoal/85 border-b border-border/60 hover:text-crimson transition-colors"
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    {t(k)}
+                  </a>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </motion.header>
   );
