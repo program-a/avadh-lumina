@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Site from "@/components/Site";
+import { t } from "@/i18n/siteCopy";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Avadh Food & Beverages — Crafted by Passion. Inspired by Taste." },
-      { name: "description", content: "A multi-brand culinary house from Gurgaon — home to Bokchoy, Swooshi and Lil Buns. An editorial study in flavour, craft and quiet luxury." },
-      { property: "og:title", content: "Avadh Food & Beverages" },
-      { property: "og:description", content: "Crafted by Passion. Inspired by Taste." },
+      { title: t("meta.title") },
+      { name: "description", content: t("meta.description") },
+      { property: "og:title", content: t("brand.short") },
+      { property: "og:description", content: t("home.tagline") },
     ],
   }),
   component: Site,
