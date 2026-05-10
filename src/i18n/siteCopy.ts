@@ -7,6 +7,11 @@ const messages = {
   "meta.title": "Avadh Food and Beverages — Crafted by Passion. Inspired by Taste.",
   "meta.description":
     "Founded in 2020 in Gurgaon, Avadh Food and Beverages is the parent company of Asian Kitchen Bokchoy, Swooshi, and Lil Buns.",
+  "meta.keywords":
+    "Avadh Food and Beverages, Asian Kitchen Bokchoy, Swooshi, Lil Buns, food and beverage company Gurgaon, multi-brand food company India, Pan-Asian restaurant group, sushi Gurgaon, cloud kitchen India",
+
+  "seo.ogImageAlt":
+    "Avadh Food and Beverages — Crafted by Passion. Inspired by Taste. Parent company to Asian Kitchen Bokchoy, Swooshi, and Lil Buns.",
 
   "nav.home": "Home",
   "nav.about": "About Us",

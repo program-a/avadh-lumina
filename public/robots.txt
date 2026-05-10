@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Crawl-delay friendly
+Crawl-delay: 1
+
+# Set VITE_SITE_URL to your production domain and align this sitemap URL with `src/lib/seo.ts`
+Sitemap: https://avadhfoodandbeverages.com/sitemap.xml

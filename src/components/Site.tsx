@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import heroFood from "@/assets/hero-food.jpg";
+import logoImg from "@/assets/logo-1.png";
 import bokchoyImg from "@/assets/bokchoy.jpg";
 import swooshiImg from "@/assets/swooshi.jpg";
 import lilbunsImg from "@/assets/lilbuns.jpg";
@@ -95,8 +96,18 @@ function Nav() {
       }`}
     >
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 flex items-center justify-between gap-4">
-        <a href="#top" className="flex items-baseline gap-2 min-w-0">
-          <span className="font-serif text-xl tracking-tight truncate">{t("brand.short")}</span>
+        <a
+          href="#top"
+          className="flex items-center shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
+        >
+          <img
+            src={logoImg}
+            alt={t("brand.short")}
+            width={48}
+            height={48}
+            className="h-10 w-10 sm:h-11 sm:w-11 object-contain"
+            decoding="async"
+          />
         </a>
         <div className="flex items-center gap-3 shrink-0">
           <nav className="hidden lg:flex items-center gap-8 flex-wrap justify-end" aria-label={t("nav.menuTitle")}>
