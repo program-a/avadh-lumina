@@ -1,10 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
-import heroFood from "@/assets/hero-food.jpg";
-import logoImg from "@/assets/logo-1.png";
-import bokchoyImg from "@/assets/bokchoy.jpg";
-import swooshiImg from "@/assets/swooshi.jpg";
-import lilbunsImg from "@/assets/lilbuns.jpg";
+// import heroFood from "@/assets/hero-food.jpg";
+// import logoImg from "@/assets/logo-1.png";
+// import bokchoyImg from "@/assets/bokchoy.jpg";
+// import swooshiImg from "@/assets/swooshi.jpg";
+// import lilbunsImg from "@/assets/lilbuns.jpg";
+
+/** Served from `public/` — hero: flagship spread; brands aligned to cuisine (see filenames in public). */
+const heroFood = "/billbuns-7.jpeg";
+const logoImg = "/logo-1.png";
+const bokchoyImg = "/billbuns-4.jpeg";
+const swooshiImg = "/billbuns-8.jpeg";
+const lilbunsImg = "/billbuns-3.jpeg";
 import type { SiteMessageKey } from "@/i18n/siteCopy";
 import { t } from "@/i18n/siteCopy";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
