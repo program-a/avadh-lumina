@@ -98,6 +98,8 @@ const messages = {
     "With its vibrant and friendly identity, Lil Buns focuses on delivering happiness in every bite, making it especially popular among younger audiences and families.",
 
   "img.hero.alt": "Food presentation representing Avadh Food and Beverages.",
+  "img.about.alt":
+    "Asian fusion dish — glazed salmon, noodles, and sides — representing Avadh Food and Beverages.",
   "img.bokchoy.alt": "Asian Kitchen Bokchoy brand imagery.",
   "img.swooshi.alt": "Swooshi brand imagery.",
   "img.lilbuns.alt": "Lil Buns brand imagery.",
