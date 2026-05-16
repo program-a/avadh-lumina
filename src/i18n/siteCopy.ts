@@ -6,12 +6,12 @@ const messages = {
 
   "meta.title": "Avadh Food and Beverages — Crafted by Passion. Inspired by Taste.",
   "meta.description":
-    "Founded in 2020 in Gurgaon, Avadh Food and Beverages is the parent company of Asian Kitchen Bokchoy, Swooshi, and Lil Buns.",
+    "Founded in 2020 in Gurgaon, Avadh Food and Beverages is the parent company of Bokchoy, Swooshi, and Lil Buns.",
   "meta.keywords":
-    "Avadh Food and Beverages, Asian Kitchen Bokchoy, Swooshi, Lil Buns, food and beverage company Gurgaon, multi-brand food company India, Pan-Asian restaurant group, sushi Gurgaon, cloud kitchen India",
+    "Avadh Food and Beverages, Bokchoy, Swooshi, Lil Buns, food and beverage company Gurgaon, multi-brand food company India, Pan-Asian restaurant group, sushi Gurgaon, cloud kitchen India",
 
   "seo.ogImageAlt":
-    "Avadh Food and Beverages — Crafted by Passion. Inspired by Taste. Parent company to Asian Kitchen Bokchoy, Swooshi, and Lil Buns.",
+    "Avadh Food and Beverages — Crafted by Passion. Inspired by Taste. Parent company to Bokchoy, Swooshi, and Lil Buns.",
 
   "nav.home": "Home",
   "nav.about": "About Us",
@@ -28,7 +28,7 @@ const messages = {
   "home.p1":
     "Founded in 2020 in Gurgaon by two passionate food lovers, Avadh Food and Beverages was born out of a shared vision—to create memorable food experiences that blend authenticity with innovation.",
   "home.p2":
-    "As a parent company to three unique and fast-growing brands—Asian Kitchen Bokchoy, Swooshi, and Lil Buns—we are redefining how people experience food across cuisines, formats, and occasions.",
+    "As a parent company to three unique and fast-growing brands—Bokchoy, Swooshi, and Lil Buns—we are redefining how people experience food across cuisines, formats, and occasions.",
   "home.p3":
     "From bold Asian flavors to contemporary fusion and indulgent comfort treats, we bring diversity, quality, and creativity to every plate.",
 
@@ -44,7 +44,7 @@ const messages = {
   "about.core4": "Continuously innovating to stay ahead in a competitive market",
   "about.brandsIntro": "Today, Avadh Food and Beverages proudly operates as the parent company of:",
   "about.brandLine.bokchoy":
-    "Asian Kitchen Bokchoy – Delivering authentic and contemporary Asian cuisine with bold flavors and fresh ingredients.",
+    "Bokchoy – Delivering authentic and contemporary Asian cuisine with bold flavors and fresh ingredients.",
   "about.brandLine.swooshi":
     "Swooshi – A modern take on sushi and fusion bites, designed for the evolving urban palate.",
   "about.brandLine.lilbuns":
@@ -73,9 +73,9 @@ const messages = {
   "brands.intro":
     "At Avadh Food and Beverages, each of our brands is built with a distinct identity, concept, and audience in mind. Together, they reflect our passion for variety, innovation, and memorable food experiences.",
 
-  "brands.bokchoy.name": "Asian Kitchen Bokchoy",
+  "brands.bokchoy.name": "Bokchoy",
   "brands.bokchoy.p1":
-    "Asian Kitchen Bokchoy is our tribute to the rich and diverse culinary traditions of Asia. Designed for those who appreciate bold flavors and authentic recipes, Bokchoy brings together the best of Chinese, Thai, and Pan-Asian cuisines under one roof.",
+    "Bokchoy is our tribute to the rich and diverse culinary traditions of Asia. Designed for those who appreciate bold flavors and authentic recipes, Bokchoy brings together the best of Chinese, Thai, and Pan-Asian cuisines under one roof.",
   "brands.bokchoy.p2":
     "From sizzling wok-tossed noodles and flavorful curries to handcrafted dim sums and signature sauces, every dish is prepared using fresh ingredients and traditional techniques. The brand focuses on delivering a balance of authenticity and modern presentation, making it perfect for both casual dining and special occasions.",
   "brands.bokchoy.p3":
@@ -99,11 +99,12 @@ const messages = {
 
   "img.hero.alt": "Food presentation representing Avadh Food and Beverages.",
   "img.about.alt":
-    "Asian fusion dish — glazed salmon, noodles, and sides — representing Avadh Food and Beverages.",
-  "img.bokchoy.alt": "Asian Kitchen Bokchoy brand imagery.",
+    "Steamed dumplings in a glossy sauce with chili and scallion garnish — representing Avadh Food and Beverages.",
+  "img.bokchoy.alt": "Bokchoy brand imagery.",
   "img.swooshi.alt": "Swooshi brand imagery.",
   "img.lilbuns.alt": "Lil Buns brand imagery.",
 
+  "contact.eyebrow": "Get in touch",
   "contact.title": "Contact Us",
   "contact.company": "Avadh Food and Beverages",
   "contact.location": "Gurgaon, India",

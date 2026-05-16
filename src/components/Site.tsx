@@ -12,8 +12,8 @@ const logoImg = "/logo-1.png";
 const bokchoyImg = "/billbuns-4.jpeg";
 const swooshiImg = "/billbuns-8.jpeg";
 const lilbunsImg = "/billbuns-3.jpeg";
-/** About section column — distinct from hero and brand chapters; pan-Asian platter. */
-const aboutSectionImg = "/billbuns-6.jpeg";
+/** About section column — steamed dumplings in signature sauce (see `public/billbuns-5.jpeg`). */
+const aboutSectionImg = "/billbuns-5.jpeg";
 import type { SiteMessageKey } from "@/i18n/siteCopy";
 import { t } from "@/i18n/siteCopy";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -107,16 +107,20 @@ function Nav() {
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 flex items-center justify-between gap-4">
         <a
           href="#top"
-          className="flex items-center shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
+          aria-label={t("brand.short")}
+          className="flex items-center gap-2.5 sm:gap-3 min-w-0 shrink rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
         >
           <img
             src={logoImg}
-            alt={t("brand.short")}
+            alt=""
             width={48}
             height={48}
-            className="h-10 w-10 sm:h-11 sm:w-11 object-contain"
+            className="h-10 w-10 sm:h-11 sm:w-11 shrink-0 object-contain"
             decoding="async"
           />
+          <span className="font-serif text-[0.95rem] sm:text-lg text-charcoal leading-snug tracking-tight text-left">
+            {t("brand.short")}
+          </span>
         </a>
         <div className="flex items-center gap-3 shrink-0">
           <nav className="hidden lg:flex items-center gap-8 flex-wrap justify-end" aria-label={t("nav.menuTitle")}>
@@ -231,7 +235,7 @@ function HomeSection() {
           </div>
           <motion.div
             style={{ y: y2 }}
-            className="absolute left-2 md:-left-16 bottom-6 md:bottom-10 max-w-[14rem] md:max-w-[18rem] bg-ivory/90 backdrop-blur-sm p-5 md:p-6 border-l border-crimson/60"
+            className="absolute left-2 md:-left-16 top-6 md:top-10 max-w-[14rem] md:max-w-[18rem] z-10 bg-ivory/90 backdrop-blur-sm p-5 md:p-6 border-l border-crimson/60"
           >
             <p className="font-serif italic text-base md:text-lg leading-snug text-charcoal/80">{t("footer.tagline")}</p>
             <p className="label-eyebrow mt-3 text-charcoal/60">{t("contact.company")}</p>
@@ -259,6 +263,7 @@ function HomeSection() {
 function AboutSection() {
   const coreItems: SiteMessageKey[] = ["about.core1", "about.core2", "about.core3", "about.core4"];
   const brandLines: SiteMessageKey[] = ["about.brandLine.bokchoy", "about.brandLine.swooshi", "about.brandLine.lilbuns"];
+  const missionItems: SiteMessageKey[] = ["mission.m1", "mission.m2", "mission.m3", "mission.m4", "mission.m5"];
   return (
     <section id="about" className="relative py-16 md:py-40 border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12">
@@ -314,37 +319,28 @@ function AboutSection() {
             </Reveal>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
 
-/* ---------- mission & vision ---------- */
-
-function MissionSection() {
-  const missionItems: SiteMessageKey[] = ["mission.m1", "mission.m2", "mission.m3", "mission.m4", "mission.m5"];
-  return (
-    <section id="mission" className="relative py-24 md:py-40 bg-cream/60 border-y border-border">
-      <div className="mx-auto max-w-[1500px] px-5 md:px-12">
-        <Reveal>
-          <Eyebrow>{t("mission.sectionTitle")}</Eyebrow>
-        </Reveal>
-        <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,8vw,5rem)] leading-[0.95]">
-          <SplitWord text={t("mission.sectionTitle")} />
-        </h2>
-
-        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-12 md:gap-16">
-          <div className="col-span-12 md:col-span-6">
-            <span className="label-eyebrow text-crimson">{t("mission.ourMission")}</span>
-            <ul className="mt-6 space-y-4 list-disc pl-5 text-charcoal/80 leading-[1.85]">
-              {missionItems.map((key) => (
-                <li key={key}>{t(key)}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="col-span-12 md:col-span-6">
-            <span className="label-eyebrow text-crimson">{t("mission.ourVision")}</span>
-            <p className="mt-6 font-serif text-xl md:text-2xl leading-snug text-charcoal/85">{t("mission.visionText")}</p>
+        <div
+          id="mission"
+          className="mt-16 md:mt-24 pt-16 md:pt-20 border-t border-border scroll-mt-28 md:scroll-mt-32"
+        >
+          <div className="grid grid-cols-12 gap-10 md:gap-14 lg:gap-16">
+            <div className="col-span-12 md:col-span-6">
+              <Reveal>
+                <span className="label-eyebrow text-crimson">{t("mission.ourMission")}</span>
+              </Reveal>
+              <ul className="mt-6 space-y-4 list-disc pl-5 text-charcoal/80 leading-[1.85]">
+                {missionItems.map((key) => (
+                  <li key={key}>{t(key)}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-span-12 md:col-span-6">
+              <Reveal delay={0.06}>
+                <span className="label-eyebrow text-crimson">{t("mission.ourVision")}</span>
+              </Reveal>
+              <p className="mt-6 font-serif text-xl md:text-2xl leading-snug text-charcoal/85">{t("mission.visionText")}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -588,7 +584,7 @@ function ContactSection() {
     <section id="contact" className="relative pt-28 md:pt-40 pb-12 md:pb-16 border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12">
         <Reveal>
-          <Eyebrow>{t("contact.title")}</Eyebrow>
+          <Eyebrow>{t("contact.eyebrow")}</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.5rem,12vw,9rem)] leading-[0.85]">
@@ -650,7 +646,6 @@ export default function Site() {
       <main>
         <HomeSection />
         <AboutSection />
-        <MissionSection />
         <WhySection />
         <BrandsSection />
         <ContactSection />

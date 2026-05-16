@@ -142,10 +142,9 @@ export function breadcrumbJsonLd(): Record<string, unknown> {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: t("nav.home"), item: SITE_URL },
       { "@type": "ListItem", position: 2, name: t("nav.about"), item: `${SITE_URL}#about` },
-      { "@type": "ListItem", position: 3, name: t("nav.mission"), item: `${SITE_URL}#mission` },
-      { "@type": "ListItem", position: 4, name: t("nav.why"), item: `${SITE_URL}#why` },
-      { "@type": "ListItem", position: 5, name: t("nav.brands"), item: `${SITE_URL}#brands` },
-      { "@type": "ListItem", position: 6, name: t("nav.contact"), item: `${SITE_URL}#contact` },
+      { "@type": "ListItem", position: 3, name: t("nav.why"), item: `${SITE_URL}#why` },
+      { "@type": "ListItem", position: 4, name: t("nav.brands"), item: `${SITE_URL}#brands` },
+      { "@type": "ListItem", position: 5, name: t("nav.contact"), item: `${SITE_URL}#contact` },
     ],
   };
 }
