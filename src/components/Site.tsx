@@ -31,12 +31,23 @@ function Eyebrow({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
-function Reveal({ children, delay = 0, y = 28 }: { children: React.ReactNode; delay?: number; y?: number }) {
+function Reveal({
+  children,
+  delay = 0,
+  y = 28,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  y?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <motion.div
       ref={ref}
+      className={className}
       initial={{ opacity: 0, y }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1.2, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -247,8 +258,8 @@ function AboutSection() {
   const brandLines: SiteMessageKey[] = ["about.brandLine.bokchoy", "about.brandLine.swooshi", "about.brandLine.lilbuns"];
   const missionItems: SiteMessageKey[] = ["mission.m1", "mission.m2", "mission.m3", "mission.m4", "mission.m5"];
   return (
-    <section id="about" className="relative py-16 md:py-40 border-t border-border">
-      <div className="mx-auto max-w-[1500px] px-5 md:px-12">
+    <section id="about" className="relative py-16 md:py-40 border-t border-border min-w-0">
+      <div className="mx-auto max-w-[1500px] px-5 md:px-12 min-w-0">
         <Reveal>
           <Eyebrow>{t("about.eyebrow")}</Eyebrow>
         </Reveal>
@@ -286,28 +297,32 @@ function AboutSection() {
 
         <div
           id="mission"
-          className="mt-16 md:mt-24 pt-16 md:pt-20 border-t border-border scroll-mt-28 md:scroll-mt-32"
+          className="mt-16 md:mt-24 pt-16 md:pt-20 border-t border-border scroll-mt-28 md:scroll-mt-32 min-w-0"
         >
-          <div className="grid grid-cols-12 gap-10 md:gap-14 lg:gap-16">
-            <div className="col-span-12 md:col-span-6">
-              <Reveal>
-                <h3 className="font-serif text-xl md:text-2xl font-light text-crimson leading-snug">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-14 lg:gap-20 min-w-0">
+            <div className="min-w-0 w-full">
+              <Reveal className="overflow-visible">
+                <h3 className="font-serif text-xl md:text-2xl font-light text-crimson leading-normal">
                   {t("mission.ourMission")}
                 </h3>
               </Reveal>
-              <ul className="mt-6 space-y-4 list-disc pl-5 text-charcoal/80 leading-[1.85]">
+              <ul className="mt-6 space-y-4 list-disc pl-6 sm:pl-7 text-charcoal/80 text-[0.9375rem] sm:text-base leading-[1.85] break-words [overflow-wrap:anywhere]">
                 {missionItems.map((key) => (
-                  <li key={key}>{t(key)}</li>
+                  <li key={key} className="min-w-0 pl-0.5">
+                    {t(key)}
+                  </li>
                 ))}
               </ul>
             </div>
-            <div className="col-span-12 md:col-span-6">
-              <Reveal delay={0.06}>
-                <h3 className="font-serif text-xl md:text-2xl font-light text-crimson leading-snug">
+            <div className="min-w-0 w-full">
+              <Reveal delay={0.06} className="overflow-visible">
+                <h3 className="font-serif text-xl md:text-2xl font-light text-crimson leading-normal">
                   {t("mission.ourVision")}
                 </h3>
               </Reveal>
-              <p className="mt-6 text-charcoal/80 leading-[1.85]">{t("mission.visionText")}</p>
+              <p className="mt-6 text-charcoal/80 text-[0.9375rem] sm:text-base leading-[1.85] break-words [overflow-wrap:anywhere]">
+                {t("mission.visionText")}
+              </p>
             </div>
           </div>
         </div>
