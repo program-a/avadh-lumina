@@ -252,7 +252,7 @@ function AboutSection() {
     <section id="about" className="relative py-16 md:py-40 border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12">
         <Reveal>
-          <Eyebrow>{t("about.title")}</Eyebrow>
+          <Eyebrow>{t("about.eyebrow")}</Eyebrow>
         </Reveal>
         <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,8vw,5.5rem)] leading-[0.95] max-w-4xl">
           <SplitWord text={t("about.title")} />
@@ -288,7 +288,7 @@ function AboutSection() {
           <div className="col-span-12 md:col-span-5 md:col-start-8">
             <Reveal delay={0.12}>
               <figure className="md:sticky md:top-28">
-                <div className="relative aspect-[4/5] max-h-[min(85vh,52rem)] mx-auto md:mx-0 overflow-hidden rounded-2xl border border-border/70 bg-cream/30 shadow-sm">
+                <div className="relative aspect-[4/5] max-h-[min(85vh,52rem)] mx-auto md:mx-0 overflow-hidden brand-image-fade">
                   <img
                     src={aboutSectionImg}
                     alt={t("img.about.alt")}
@@ -296,7 +296,7 @@ function AboutSection() {
                     height={1500}
                     loading="lazy"
                     decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </figure>
@@ -374,7 +374,6 @@ type BrandProps = {
   motif: React.ReactNode;
   align: "left" | "right";
   titleVariant?: BrandTitleVariant;
-  rounded?: boolean;
 };
 
 const brandTitleClass: Record<BrandTitleVariant, string> = {
@@ -393,7 +392,6 @@ function BrandChapter({
   motif,
   align,
   titleVariant = "default",
-  rounded,
 }: BrandProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -408,11 +406,11 @@ function BrandChapter({
           className={`col-span-12 md:col-span-6 ${align === "right" ? "md:col-start-7 md:order-2" : ""}`}
         >
           <motion.div style={{ y: imgY }} className="relative">
-            <div className={`relative aspect-[4/5] overflow-hidden ${rounded ? "rounded-[2rem]" : ""}`}>
+            <div className="relative aspect-[4/5] overflow-hidden brand-image-fade">
               <motion.img
                 src={img}
                 alt={t(imgAltKey)}
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
                 initial={{ scale: 1.2 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -420,7 +418,9 @@ function BrandChapter({
                 loading="lazy"
               />
             </div>
-            <div className="absolute -top-6 -right-4 md:-top-8 md:-right-8 w-20 h-20 md:w-32 md:h-32 opacity-50 text-charcoal">{motif}</div>
+            <div className="pointer-events-none absolute -top-6 -right-4 md:-top-8 md:-right-8 w-20 h-20 md:w-32 md:h-32 opacity-50 text-charcoal">
+              {motif}
+            </div>
           </motion.div>
         </div>
 
@@ -541,7 +541,6 @@ function BrandsSection() {
         imgAltKey="img.lilbuns.alt"
         align="left"
         titleVariant="italic"
-        rounded
         motif={
           <svg viewBox="0 0 100 100" fill="none" aria-hidden>
             <motion.circle

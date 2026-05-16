@@ -117,6 +117,25 @@
     letter-spacing: 0.32em;
     font-weight: 400;
   }
+  /* Brand images: same linear dissolve on every edge, slightly softer than one-sided fade */
+  .brand-image-fade {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .brand-image-fade > img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
   .grain::before {
     content: "";
     position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .05;

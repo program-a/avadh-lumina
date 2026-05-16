@@ -32,6 +32,7 @@ const messages = {
   "home.p3":
     "From bold Asian flavors to contemporary fusion and indulgent comfort treats, we bring diversity, quality, and creativity to every plate.",
 
+  "about.eyebrow": "Our story",
   "about.title": "About Us",
   "about.p1":
     "Avadh Food and Beverages started as a simple idea between two food enthusiasts who believed that great food has the power to bring people together and create lasting memories.",
