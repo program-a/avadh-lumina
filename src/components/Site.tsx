@@ -210,7 +210,12 @@ function HomeSection() {
       <div className="relative mx-auto max-w-[1500px] px-5 md:px-12 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-7 flex flex-col">
           <Reveal>
-            <Eyebrow>{t("home.title")}</Eyebrow>
+            <p className="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-charcoal/90">
+              <span className="inline-block h-px w-10 bg-charcoal/35 shrink-0 translate-y-[-0.12em]" aria-hidden />
+              <span className="editorial-h text-[clamp(1.65rem,5vw,3.5rem)] font-light tracking-tight leading-tight">
+                {t("home.title")}
+              </span>
+            </p>
           </Reveal>
           <h1 className="editorial-h mt-8 md:mt-10 text-[clamp(2rem,8vw,6rem)] text-charcoal leading-[1.05]">
             <SplitWord text={t("home.tagline")} />
