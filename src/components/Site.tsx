@@ -9,7 +9,7 @@ import { motion, useScroll, useTransform, useSpring, useInView } from "framer-mo
 /** Served from `public/` — hero: flagship spread; brands aligned to cuisine (see filenames in public). */
 const heroFood = "/billbuns-7.jpeg";
 const logoImg = "/logo-1.png";
-const bokchoyImg = "/billbuns-4.jpeg";
+const bokchoyImg = "/billbuns-11.jpeg";
 const swooshiImg = "/billbuns-8.jpeg";
 const lilbunsImg = "/billbuns-3.jpeg";
 const bokchoyLogo = "/bokchoi-logo.png";
@@ -518,7 +518,7 @@ function BrandsSection() {
         paragraphKeys={["brands.bokchoy.p1", "brands.bokchoy.p2", "brands.bokchoy.p3"]}
         img={bokchoyImg}
         imgAltKey="img.bokchoy.alt"
-        blobShape="a"
+        blobShape="c"
         align="left"
         motif={
           <svg viewBox="0 0 100 100" fill="none" aria-hidden>
