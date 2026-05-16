@@ -687,7 +687,7 @@ function BrandsSection() {
         paragraphKeys={["brands.lilbuns.p1", "brands.lilbuns.p2", "brands.lilbuns.p3"]}
         img={lilbunsImg}
         imgAltKey="img.lilbuns.alt"
-        blobShape="classic"
+        imageLayout="background"
         align="left"
         titleVariant="italic"
         motif={
