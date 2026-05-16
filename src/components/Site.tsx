@@ -498,9 +498,9 @@ function BrandsSection() {
   return (
     <section id="brands" className="relative border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 pt-24 md:pt-32 pb-8 md:pb-12">
-        <Reveal>
+        {/* <Reveal>
           <Eyebrow>{t("brands.eyebrow")}</Eyebrow>
-        </Reveal>
+        </Reveal> */}
         <Reveal delay={0.1}>
           <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,9vw,7rem)] leading-[0.95] max-w-5xl">
             <SplitWord text={t("brands.sectionTitle")} />
