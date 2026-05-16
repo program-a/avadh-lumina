@@ -12,8 +12,6 @@ const logoImg = "/logo-1.png";
 const bokchoyImg = "/billbuns-4.jpeg";
 const swooshiImg = "/billbuns-8.jpeg";
 const lilbunsImg = "/billbuns-3.jpeg";
-/** About section column — steamed dumplings in signature sauce (see `public/billbuns-5.jpeg`). */
-const aboutSectionImg = "/billbuns-5.jpeg";
 const bokchoyLogo = "/bokchoi-logo.png";
 const swooshiLogo = "/swooshi-logo.png";
 const lilbunsLogo = "/billbuns-logo.png";
@@ -258,49 +256,31 @@ function AboutSection() {
           <SplitWord text={t("about.title")} />
         </h2>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-10 md:gap-14 lg:gap-16 items-start">
-          <div className="col-span-12 md:col-span-6">
-            <div className="space-y-6 max-w-2xl md:max-w-none text-charcoal/75 leading-[1.85]">
+        <div className="mt-10 md:mt-14 space-y-12 md:space-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-14 lg:gap-x-20 lg:gap-y-12">
+            <div className="space-y-6 text-charcoal/75 leading-[1.85] md:pr-4">
               <p>{t("about.p1")}</p>
               <p>{t("about.p2")}</p>
             </div>
-            <div className="mt-12 md:mt-16">
+            <div>
               <p className="label-eyebrow text-charcoal/80 mb-4">{t("about.coreIntro")}</p>
-              <ul className="space-y-3 max-w-2xl md:max-w-none list-disc pl-5 text-charcoal/80 leading-[1.8]">
+              <ul className="space-y-3 list-disc pl-5 text-charcoal/80 leading-[1.8]">
                 {coreItems.map((key) => (
                   <li key={key}>{t(key)}</li>
                 ))}
               </ul>
             </div>
-            <div className="mt-12 md:mt-16 space-y-6 max-w-2xl md:max-w-none">
-              <p className="text-charcoal/80 leading-[1.85]">{t("about.brandsIntro")}</p>
-              <ul className="space-y-4 list-none pl-0">
-                {brandLines.map((key) => (
-                  <li key={key} className="pl-4 border-l-2 border-crimson/50 text-charcoal/75 leading-[1.8]">
-                    {t(key)}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-charcoal/75 leading-[1.85] pt-2">{t("about.closing")}</p>
-            </div>
           </div>
-
-          <div className="col-span-12 md:col-span-5 md:col-start-8">
-            <Reveal delay={0.12}>
-              <figure className="md:sticky md:top-28">
-                <div className="relative aspect-[4/5] max-h-[min(85vh,52rem)] mx-auto md:mx-0 overflow-hidden brand-image-fade">
-                  <img
-                    src={aboutSectionImg}
-                    alt={t("img.about.alt")}
-                    width={1200}
-                    height={1500}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </figure>
-            </Reveal>
+          <div className="space-y-6">
+            <p className="text-charcoal/80 leading-[1.85] text-lg md:text-xl max-w-4xl">{t("about.brandsIntro")}</p>
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 list-none pl-0">
+              {brandLines.map((key) => (
+                <li key={key} className="pl-4 border-l-2 border-crimson/50 text-charcoal/75 leading-[1.8]">
+                  {t(key)}
+                </li>
+              ))}
+            </ul>
+            <p className="text-charcoal/75 leading-[1.85] pt-2 md:text-lg max-w-4xl">{t("about.closing")}</p>
           </div>
         </div>
 
