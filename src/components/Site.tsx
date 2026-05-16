@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView, type MotionValue } from "framer-motion";
 // import heroFood from "@/assets/hero-food.jpg";
 // import logoImg from "@/assets/logo-1.png";
 // import bokchoyImg from "@/assets/bokchoy.jpg";
@@ -363,6 +363,7 @@ function WhySection() {
 
 type BrandTitleVariant = "default" | "accent" | "italic";
 type BrandBlobShape = "a" | "b" | "c" | "classic";
+type BrandImageLayout = "foreground" | "background";
 
 type BrandProps = {
   nameKey: SiteMessageKey;
@@ -373,7 +374,9 @@ type BrandProps = {
   imgAltKey: SiteMessageKey;
   motif: React.ReactNode;
   align: "left" | "right";
-  blobShape: BrandBlobShape;
+  imageLayout?: BrandImageLayout;
+  blobShape?: BrandBlobShape;
+  rotateImage180?: boolean;
   titleVariant?: BrandTitleVariant;
 };
 
@@ -422,6 +425,90 @@ const brandTitleClass: Record<BrandTitleVariant, string> = {
   italic: "italic font-light text-charcoal/90",
 };
 
+function BrandBackgroundImage({
+  src,
+  alt,
+  align,
+  y,
+  rotate180 = false,
+}: {
+  src: string;
+  alt: string;
+  align: "left" | "right";
+  y: MotionValue<number>;
+  rotate180?: boolean;
+}) {
+  const objectPosition = align === "left" ? "70% center" : "30% center";
+  const scrim =
+    align === "left"
+      ? "bg-gradient-to-r from-ivory/90 from-[28%] via-ivory/35 via-45% to-transparent"
+      : "bg-gradient-to-l from-ivory/90 from-[28%] via-ivory/35 via-45% to-transparent";
+
+  return (
+    <div className="brand-chapter-bg">
+      <motion.div className="absolute inset-0" style={{ y }}>
+        <img
+          src={src}
+          alt={alt}
+          width={1600}
+          height={1200}
+          loading="lazy"
+          decoding="async"
+          className="brand-chapter-bg__img"
+          style={{ objectPosition }}
+        />
+      </motion.div>
+      <div className={`absolute inset-0 ${scrim}`} aria-hidden />
+    </div>
+  );
+}
+
+
+function BrandChapterContent({
+  brandLogo,
+  logoAltKey,
+  paragraphKeys,
+  name,
+  titleVariant,
+  align,
+}: {
+  brandLogo: string;
+  logoAltKey: SiteMessageKey;
+  paragraphKeys: readonly SiteMessageKey[];
+  name: string;
+  titleVariant: BrandTitleVariant;
+  align: "left" | "right";
+}) {
+  const logoAlign = align === "right" ? "object-right" : "object-left";
+  const textAlign = align === "right" ? "md:ml-auto md:text-right" : "";
+
+  return (
+    <>
+      <Reveal>
+        <img
+          src={brandLogo}
+          alt={t(logoAltKey)}
+          width={320}
+          height={320}
+          loading="lazy"
+          decoding="async"
+          className={`mb-5 md:mb-6 h-16 md:h-24 w-auto max-w-[min(100%,14rem)] object-contain ${logoAlign}`}
+        />
+      </Reveal>
+      <h3 className={`editorial-h text-[clamp(2rem,9vw,5.5rem)] leading-[0.95] ${brandTitleClass[titleVariant]}`}>
+        <SplitWord text={name} />
+      </h3>
+      <div className={`mt-8 space-y-6 max-w-md text-charcoal/75 leading-[1.9] ${textAlign}`}>
+        {paragraphKeys.map((key) => (
+          <Reveal key={key} delay={0.05}>
+            <p>{t(key)}</p>
+          </Reveal>
+        ))}
+      </div>
+    </>
+  );
+}
+
 function BrandChapter({
   nameKey,
   brandLogo,
@@ -431,7 +518,9 @@ function BrandChapter({
   imgAltKey,
   motif,
   align,
-  blobShape,
+  imageLayout = "foreground",
+  blobShape = "a",
+  rotateImage180 = false,
   titleVariant = "default",
 }: BrandProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -439,6 +528,39 @@ function BrandChapter({
   const y = useSpring(useTransform(scrollYProgress, [0, 1], [80, -80]), { stiffness: 60, damping: 20 });
   const imgY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
   const name = t(nameKey);
+
+  if (imageLayout === "background") {
+    return (
+      <div ref={ref} className="relative min-h-[28rem] md:min-h-[36rem] py-24 md:py-40 overflow-hidden">
+        <BrandBackgroundImage
+          src={img}
+          alt={t(imgAltKey)}
+          align={align}
+          y={imgY}
+          rotate180={rotateImage180}
+        />
+        <motion.div style={{ y }} className="relative z-10 mx-auto max-w-[1500px] px-5 md:px-12">
+          <div className={`relative max-w-xl ${align === "right" ? "md:ml-auto" : ""}`}>
+            <BrandChapterContent
+              brandLogo={brandLogo}
+              logoAltKey={logoAltKey}
+              paragraphKeys={paragraphKeys}
+              name={name}
+              titleVariant={titleVariant}
+              align={align}
+            />
+            <div
+              className={`pointer-events-none absolute top-0 w-20 h-20 md:w-32 md:h-32 opacity-40 text-charcoal ${
+                align === "right" ? "left-0 md:-left-4" : "right-0 md:-right-4"
+              }`}
+            >
+              {motif}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className="relative py-24 md:py-40 overflow-hidden">
@@ -465,29 +587,14 @@ function BrandChapter({
             align === "right" ? "md:col-start-1 md:order-1" : "md:col-start-8"
           }`}
         >
-          <Reveal>
-            <img
-              src={brandLogo}
-              alt={t(logoAltKey)}
-              width={320}
-              height={320}
-              loading="lazy"
-              decoding="async"
-              className="mb-5 md:mb-6 h-16 md:h-24 w-auto max-w-[min(100%,14rem)] object-contain object-left"
-            />
-          </Reveal>
-          <h3
-            className={`editorial-h text-[clamp(2rem,9vw,5.5rem)] leading-[0.95] ${brandTitleClass[titleVariant]}`}
-          >
-            <SplitWord text={name} />
-          </h3>
-          <div className="mt-8 space-y-6 max-w-md text-charcoal/75 leading-[1.9]">
-            {paragraphKeys.map((key) => (
-              <Reveal key={key} delay={0.05}>
-                <p>{t(key)}</p>
-              </Reveal>
-            ))}
-          </div>
+          <BrandChapterContent
+            brandLogo={brandLogo}
+            logoAltKey={logoAltKey}
+            paragraphKeys={paragraphKeys}
+            name={name}
+            titleVariant={titleVariant}
+            align={align}
+          />
         </motion.div>
       </div>
     </div>
@@ -518,7 +625,8 @@ function BrandsSection() {
         paragraphKeys={["brands.bokchoy.p1", "brands.bokchoy.p2", "brands.bokchoy.p3"]}
         img={bokchoyImg}
         imgAltKey="img.bokchoy.alt"
-        blobShape="c"
+        imageLayout="background"
+        rotateImage180
         align="left"
         motif={
           <svg viewBox="0 0 100 100" fill="none" aria-hidden>
@@ -551,7 +659,7 @@ function BrandsSection() {
         paragraphKeys={["brands.swooshi.p1", "brands.swooshi.p2", "brands.swooshi.p3"]}
         img={swooshiImg}
         imgAltKey="img.swooshi.alt"
-        blobShape="b"
+        imageLayout="background"
         align="right"
         titleVariant="accent"
         motif={
