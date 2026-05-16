@@ -191,11 +191,18 @@
 
   .brand-chapter-bg__img {
     position: absolute;
-    inset: -8%;
-    width: 116%;
-    height: 116%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    transform: scale(1.08);
+    transform-origin: center;
     opacity: 0.62;
+  }
+
+  .brand-chapter-bg__img--flip {
+    transform: scale(1.08) rotate(180deg);
   }
 
   @media (min-width: 768px) {

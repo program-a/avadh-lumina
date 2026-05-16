@@ -438,15 +438,14 @@ function BrandBackgroundImage({
   y: MotionValue<number>;
   rotate180?: boolean;
 }) {
-  const objectPosition = align === "left" ? "70% center" : "30% center";
   const scrim =
     align === "left"
-      ? "bg-gradient-to-r from-ivory/90 from-[28%] via-ivory/35 via-45% to-transparent"
-      : "bg-gradient-to-l from-ivory/90 from-[28%] via-ivory/35 via-45% to-transparent";
+      ? "bg-gradient-to-r from-ivory/88 via-ivory/40 via-[42%] to-transparent to-[72%]"
+      : "bg-gradient-to-l from-ivory/88 via-ivory/40 via-[42%] to-transparent to-[72%]";
 
   return (
     <div className="brand-chapter-bg">
-      <motion.div className="absolute inset-0" style={{ y }}>
+      <motion.div className="absolute inset-0 overflow-hidden" style={{ y }}>
         <img
           src={src}
           alt={alt}
@@ -454,8 +453,7 @@ function BrandBackgroundImage({
           height={1200}
           loading="lazy"
           decoding="async"
-          className="brand-chapter-bg__img"
-          style={{ objectPosition }}
+          className={`brand-chapter-bg__img ${rotate180 ? "brand-chapter-bg__img--flip" : ""}`}
         />
       </motion.div>
       <div className={`absolute inset-0 ${scrim}`} aria-hidden />
@@ -531,7 +529,7 @@ function BrandChapter({
 
   if (imageLayout === "background") {
     return (
-      <div ref={ref} className="relative min-h-[28rem] md:min-h-[36rem] py-24 md:py-40 overflow-hidden">
+      <div ref={ref} className="relative w-full min-h-[28rem] md:min-h-[36rem] py-24 md:py-40 overflow-hidden">
         <BrandBackgroundImage
           src={img}
           alt={t(imgAltKey)}
@@ -539,8 +537,13 @@ function BrandChapter({
           y={imgY}
           rotate180={rotateImage180}
         />
-        <motion.div style={{ y }} className="relative z-10 mx-auto max-w-[1500px] px-5 md:px-12">
-          <div className={`relative max-w-xl ${align === "right" ? "md:ml-auto" : ""}`}>
+        <motion.div
+          style={{ y }}
+          className={`relative z-10 mx-auto flex w-full max-w-[1500px] px-5 md:px-12 ${
+            align === "right" ? "justify-end" : "justify-start"
+          }`}
+        >
+          <div className="relative w-full max-w-xl">
             <BrandChapterContent
               brandLogo={brandLogo}
               logoAltKey={logoAltKey}
