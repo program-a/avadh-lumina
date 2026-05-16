@@ -176,6 +176,12 @@
     border-radius: 50% 50% 1.5rem 1.5rem;
   }
 
+  /* Lil Buns — original rounded portrait frame */
+  .brand-blob--shape-classic {
+    border-radius: 2rem;
+    aspect-ratio: 4 / 5;
+  }
+
   .grain::before {
     content: "";
     position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .05;

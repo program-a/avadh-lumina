@@ -367,7 +367,7 @@ function WhySection() {
 /* ---------- brands ---------- */
 
 type BrandTitleVariant = "default" | "accent" | "italic";
-type BrandBlobShape = "a" | "b" | "c";
+type BrandBlobShape = "a" | "b" | "c" | "classic";
 
 type BrandProps = {
   nameKey: SiteMessageKey;
@@ -386,6 +386,7 @@ const brandBlobClass: Record<BrandBlobShape, string> = {
   a: "brand-blob--shape-a",
   b: "brand-blob--shape-b",
   c: "brand-blob--shape-c",
+  classic: "brand-blob--shape-classic",
 };
 
 function BrandBlobImage({
@@ -580,7 +581,7 @@ function BrandsSection() {
         paragraphKeys={["brands.lilbuns.p1", "brands.lilbuns.p2", "brands.lilbuns.p3"]}
         img={lilbunsImg}
         imgAltKey="img.lilbuns.alt"
-        blobShape="c"
+        blobShape="classic"
         align="left"
         titleVariant="italic"
         motif={
