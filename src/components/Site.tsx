@@ -92,8 +92,8 @@ function Nav() {
   }, []);
   const links: [SiteMessageKey, string][] = [
     ["nav.home", "#top"],
-    ["nav.brands", "#brands"],
     ["nav.about", "#about"],
+    ["nav.brands", "#brands"],
     // ["nav.mission", "#mission"],
     ["nav.why", "#why"],
   ];
@@ -695,8 +695,8 @@ export default function Site() {
       <Nav />
       <main>
         <HomeSection />
-        <BrandsSection />
         <AboutSection />
+        <BrandsSection />
         <WhySection />
         <ContactSection />
       </main>
