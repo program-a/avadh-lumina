@@ -260,9 +260,9 @@ function AboutSection() {
   return (
     <section id="about" className="relative py-16 md:py-40 border-t border-border min-w-0">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 min-w-0">
-        <Reveal>
+        {/* <Reveal>
           <Eyebrow>{t("about.eyebrow")}</Eyebrow>
-        </Reveal>
+        </Reveal> */}
         <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,8vw,5.5rem)] leading-[0.95] max-w-4xl">
           <SplitWord text={t("about.title")} />
         </h2>
@@ -338,9 +338,9 @@ function WhySection() {
   return (
     <section id="why" className="relative py-24 md:py-40">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12">
-        <Reveal>
+        {/* <Reveal>
           <Eyebrow>{t("why.title")}</Eyebrow>
-        </Reveal>
+        </Reveal> */}
         <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,8vw,5rem)] leading-[0.95]">
           <SplitWord text={t("why.title")} />
         </h2>
@@ -628,9 +628,9 @@ function ContactSection() {
   return (
     <section id="contact" className="relative pt-28 md:pt-40 pb-12 md:pb-16 border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12">
-        <Reveal>
+        {/* <Reveal>
           <Eyebrow>{t("contact.eyebrow")}</Eyebrow>
-        </Reveal>
+        </Reveal> */}
         <Reveal delay={0.1}>
           <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.5rem,12vw,9rem)] leading-[0.85]">
             <SplitWord text={t("contact.title")} />
