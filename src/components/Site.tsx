@@ -180,7 +180,10 @@ function HomeSection() {
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
-    <section id="top" className="relative min-h-[100svh] overflow-hidden pt-28 md:pt-40 pb-20 md:pb-24">
+    <section
+      id="top"
+      className="relative min-h-0 md:min-h-[100svh] overflow-hidden pt-28 md:pt-40 pb-12 md:pb-24"
+    >
       <motion.div
         aria-hidden
         className="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full"
@@ -215,7 +218,7 @@ function HomeSection() {
           </Reveal>
         </div>
 
-        <motion.div style={{ y: y1 }} className="col-span-12 md:col-span-5 mt-10 md:mt-24 relative">
+        <motion.div style={{ y: y1 }} className="col-span-12 md:col-span-5 mt-8 md:mt-24 relative">
           <div className="relative aspect-[3/4] overflow-hidden">
             <motion.img
               src={heroFood}
@@ -257,7 +260,7 @@ function AboutSection() {
   const coreItems: SiteMessageKey[] = ["about.core1", "about.core2", "about.core3", "about.core4"];
   const brandLines: SiteMessageKey[] = ["about.brandLine.bokchoy", "about.brandLine.swooshi", "about.brandLine.lilbuns"];
   return (
-    <section id="about" className="relative py-24 md:py-40 border-t border-border">
+    <section id="about" className="relative py-16 md:py-40 border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12">
         <Reveal>
           <Eyebrow>{t("about.title")}</Eyebrow>
