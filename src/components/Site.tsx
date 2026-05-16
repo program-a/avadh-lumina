@@ -93,7 +93,7 @@ function Nav() {
   const links: [SiteMessageKey, string][] = [
     ["nav.home", "#top"],
     ["nav.about", "#about"],
-    ["nav.mission", "#mission"],
+    // ["nav.mission", "#mission"],
     ["nav.why", "#why"],
     ["nav.brands", "#brands"],
   ];
