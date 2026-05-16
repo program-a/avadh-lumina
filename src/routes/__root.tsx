@@ -110,20 +110,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: `${SITE_NAME} — ${SITE_TAGLINE}` },
       { property: "og:description", content: DEFAULT_DESCRIPTION },
       { property: "og:url", content: SITE_URL },
-      { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:url", content: OG_IMAGE },
-      { property: "og:image:secure_url", content: OG_IMAGE },
-      { property: "og:image:type", content: "image/jpeg" },
-      { property: "og:image:width", content: String(OG_IMAGE_WIDTH) },
-      { property: "og:image:height", content: String(OG_IMAGE_HEIGHT) },
-      { property: "og:image:alt", content: OG_IMAGE_ALT },
-      { itemProp: "image", content: OG_IMAGE },
 
-      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: `${SITE_NAME} — ${SITE_TAGLINE}` },
       { name: "twitter:description", content: DEFAULT_DESCRIPTION },
-      { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:image:alt", content: OG_IMAGE_ALT },
 
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: SITE_NAME },
@@ -136,6 +125,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: SITE_URL },
+      { rel: "image_src", href: OG_IMAGE },
       { rel: "icon", type: "image/png", href: "/logo-1.png" },
       { rel: "shortcut icon", href: "/logo-1.png" },
       { rel: "apple-touch-icon", href: "/logo-1.png" },
@@ -159,6 +149,17 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-IN">
       <head>
+        {/* Static social image tags — always in HTML for crawlers (SPA shell) */}
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:secure_url" content={OG_IMAGE} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content={String(OG_IMAGE_WIDTH)} />
+        <meta property="og:image:height" content={String(OG_IMAGE_HEIGHT)} />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
+        <meta itemProp="image" content={OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
         <HeadContent />
       </head>
       <body>

@@ -27,9 +27,32 @@ export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const OG_IMAGE_ALT = t("seo.ogImageAlt");
 export const LOGO_IMAGE = `${SITE_URL}/logo-1.png`;
 
-/** Open Graph image dimensions (hero asset used as social preview) */
-export const OG_IMAGE_WIDTH = 1200;
-export const OG_IMAGE_HEIGHT = 630;
+/** Dimensions of `public/og-image.jpg` (must match file or crawlers may drop the preview) */
+export const OG_IMAGE_WIDTH = 1080;
+export const OG_IMAGE_HEIGHT = 1920;
+
+export type SeoMetaTag = {
+  name?: string;
+  property?: string;
+  itemProp?: string;
+  content: string;
+};
+
+/** Open Graph + Twitter image tags (use in route head + document shell) */
+export function socialImageMeta(): SeoMetaTag[] {
+  return [
+    { property: "og:image", content: OG_IMAGE },
+    { property: "og:image:secure_url", content: OG_IMAGE },
+    { property: "og:image:type", content: "image/jpeg" },
+    { property: "og:image:width", content: String(OG_IMAGE_WIDTH) },
+    { property: "og:image:height", content: String(OG_IMAGE_HEIGHT) },
+    { property: "og:image:alt", content: OG_IMAGE_ALT },
+    { itemProp: "image", content: OG_IMAGE },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: OG_IMAGE },
+    { name: "twitter:image:alt", content: OG_IMAGE_ALT },
+  ];
+}
 
 export const ORG = {
   legalName: SITE_NAME,
