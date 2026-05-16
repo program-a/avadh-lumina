@@ -92,10 +92,10 @@ function Nav() {
   }, []);
   const links: [SiteMessageKey, string][] = [
     ["nav.home", "#top"],
+    ["nav.brands", "#brands"],
     ["nav.about", "#about"],
     // ["nav.mission", "#mission"],
     ["nav.why", "#why"],
-    ["nav.brands", "#brands"],
   ];
   const mobileLinks: [SiteMessageKey, string][] = [...links, ["nav.contact", "#contact"]];
   return (
@@ -311,7 +311,9 @@ function AboutSection() {
           <div className="grid grid-cols-12 gap-10 md:gap-14 lg:gap-16">
             <div className="col-span-12 md:col-span-6">
               <Reveal>
-                <span className="label-eyebrow text-crimson">{t("mission.ourMission")}</span>
+                <h3 className="font-serif text-xl md:text-2xl font-light text-crimson leading-snug">
+                  {t("mission.ourMission")}
+                </h3>
               </Reveal>
               <ul className="mt-6 space-y-4 list-disc pl-5 text-charcoal/80 leading-[1.85]">
                 {missionItems.map((key) => (
@@ -321,9 +323,11 @@ function AboutSection() {
             </div>
             <div className="col-span-12 md:col-span-6">
               <Reveal delay={0.06}>
-                <span className="label-eyebrow text-crimson">{t("mission.ourVision")}</span>
+                <h3 className="font-serif text-xl md:text-2xl font-light text-crimson leading-snug">
+                  {t("mission.ourVision")}
+                </h3>
               </Reveal>
-              <p className="mt-6 font-serif text-xl md:text-2xl leading-snug text-charcoal/85">{t("mission.visionText")}</p>
+              <p className="mt-6 text-charcoal/80 leading-[1.85]">{t("mission.visionText")}</p>
             </div>
           </div>
         </div>
@@ -363,6 +367,7 @@ function WhySection() {
 /* ---------- brands ---------- */
 
 type BrandTitleVariant = "default" | "accent" | "italic";
+type BrandBlobShape = "a" | "b" | "c";
 
 type BrandProps = {
   nameKey: SiteMessageKey;
@@ -373,8 +378,47 @@ type BrandProps = {
   imgAltKey: SiteMessageKey;
   motif: React.ReactNode;
   align: "left" | "right";
+  blobShape: BrandBlobShape;
   titleVariant?: BrandTitleVariant;
 };
+
+const brandBlobClass: Record<BrandBlobShape, string> = {
+  a: "brand-blob--shape-a",
+  b: "brand-blob--shape-b",
+  c: "brand-blob--shape-c",
+};
+
+function BrandBlobImage({
+  src,
+  alt,
+  shape,
+}: {
+  src: string;
+  alt: string;
+  shape: BrandBlobShape;
+}) {
+  return (
+    <motion.div
+      className={`brand-blob ${brandBlobClass[shape]} brand-image-fade`}
+      initial={{ opacity: 0, scale: 0.96 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <motion.img
+        src={src}
+        alt={alt}
+        className="h-full w-full object-cover scale-[1.14]"
+        initial={{ scale: 1.2 }}
+        whileInView={{ scale: 1.1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+        loading="lazy"
+        decoding="async"
+      />
+    </motion.div>
+  );
+}
 
 const brandTitleClass: Record<BrandTitleVariant, string> = {
   default: "text-charcoal",
@@ -391,6 +435,7 @@ function BrandChapter({
   imgAltKey,
   motif,
   align,
+  blobShape,
   titleVariant = "default",
 }: BrandProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -407,19 +452,11 @@ function BrandChapter({
             align === "right" ? "md:col-start-7 md:order-2" : "md:order-none"
           }`}
         >
-          <motion.div style={{ y: imgY }} className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden brand-image-fade">
-              <motion.img
-                src={img}
-                alt={t(imgAltKey)}
-                className="h-full w-full object-cover"
-                initial={{ scale: 1.2 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
-                loading="lazy"
-              />
-            </div>
+          <motion.div
+            style={{ y: imgY }}
+            className={`relative flex w-full justify-center ${align === "right" ? "md:justify-end" : "md:justify-start"}`}
+          >
+            <BrandBlobImage src={img} alt={t(imgAltKey)} shape={blobShape} />
             <div className="pointer-events-none absolute -top-6 -right-4 md:-top-8 md:-right-8 w-20 h-20 md:w-32 md:h-32 opacity-50 text-charcoal">
               {motif}
             </div>
@@ -485,6 +522,7 @@ function BrandsSection() {
         paragraphKeys={["brands.bokchoy.p1", "brands.bokchoy.p2", "brands.bokchoy.p3"]}
         img={bokchoyImg}
         imgAltKey="img.bokchoy.alt"
+        blobShape="a"
         align="left"
         motif={
           <svg viewBox="0 0 100 100" fill="none" aria-hidden>
@@ -517,6 +555,7 @@ function BrandsSection() {
         paragraphKeys={["brands.swooshi.p1", "brands.swooshi.p2", "brands.swooshi.p3"]}
         img={swooshiImg}
         imgAltKey="img.swooshi.alt"
+        blobShape="b"
         align="right"
         titleVariant="accent"
         motif={
@@ -541,6 +580,7 @@ function BrandsSection() {
         paragraphKeys={["brands.lilbuns.p1", "brands.lilbuns.p2", "brands.lilbuns.p3"]}
         img={lilbunsImg}
         imgAltKey="img.lilbuns.alt"
+        blobShape="c"
         align="left"
         titleVariant="italic"
         motif={
@@ -654,9 +694,9 @@ export default function Site() {
       <Nav />
       <main>
         <HomeSection />
+        <BrandsSection />
         <AboutSection />
         <WhySection />
-        <BrandsSection />
         <ContactSection />
       </main>
     </div>
