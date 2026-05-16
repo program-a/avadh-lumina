@@ -14,6 +14,9 @@ const swooshiImg = "/billbuns-8.jpeg";
 const lilbunsImg = "/billbuns-3.jpeg";
 /** About section column — steamed dumplings in signature sauce (see `public/billbuns-5.jpeg`). */
 const aboutSectionImg = "/billbuns-5.jpeg";
+const bokchoyLogo = "/bokchoi-logo.png";
+const swooshiLogo = "/swooshi-logo.png";
+const lilbunsLogo = "/billbuns-logo.png";
 import type { SiteMessageKey } from "@/i18n/siteCopy";
 import { t } from "@/i18n/siteCopy";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -118,7 +121,7 @@ function Nav() {
             className="h-10 w-10 sm:h-11 sm:w-11 shrink-0 object-contain"
             decoding="async"
           />
-          <span className="font-serif text-[0.95rem] sm:text-lg text-charcoal leading-snug tracking-tight text-left">
+          <span className="editorial-h text-[0.95rem] sm:text-lg font-light text-charcoal leading-snug tracking-tight text-left">
             {t("brand.short")}
           </span>
         </a>
@@ -179,36 +182,32 @@ function Nav() {
 
 function HomeSection() {
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 800], [0, 160]);
-  const y2 = useTransform(scrollY, [0, 800], [0, -120]);
+  const bgY = useTransform(scrollY, [0, 800], [0, 120]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
     <section
       id="top"
-      className="relative min-h-0 md:min-h-[100svh] overflow-hidden pt-28 md:pt-40 pb-12 md:pb-24"
+      className="relative min-h-0 md:min-h-[100svh] overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24"
     >
-      <motion.div
-        aria-hidden
-        className="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full"
-        style={{
-          background: "radial-gradient(closest-side, oklch(0.92 0.05 60 / 0.6), transparent)",
-        }}
-        animate={{ x: [0, 40, -20, 0], y: [0, 30, -10, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-40 -right-32 w-[34rem] h-[34rem] rounded-full"
-        style={{
-          background: "radial-gradient(closest-side, oklch(0.88 0.06 30 / 0.45), transparent)",
-        }}
-        animate={{ x: [0, -30, 15, 0], y: [0, -20, 10, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <motion.div className="absolute inset-0" aria-hidden>
+        <motion.img
+          src={heroFood}
+          alt={t("img.hero.alt")}
+          style={{ y: bgY }}
+          className="absolute inset-0 h-[115%] w-full object-cover object-center"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <motion.div
+          style={{ y: bgY }}
+          className="absolute inset-0 bg-gradient-to-r from-ivory from-[38%] via-ivory/88 to-ivory/50 md:via-ivory/72 md:to-ivory/20"
+        />
+      </motion.div>
 
-      <div className="relative mx-auto max-w-[1500px] px-5 md:px-12 grid grid-cols-12 gap-6">
-        <div className="col-span-12 md:col-span-7 flex flex-col">
+      <motion.div className="relative z-10 mx-auto max-w-[1500px] px-5 md:px-12 flex flex-col justify-center md:min-h-[calc(100svh-10rem)]">
+        <motion.div className="max-w-2xl md:max-w-3xl lg:max-w-[42rem] flex flex-col">
           <Reveal>
             <p className="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-charcoal/90">
               <span className="inline-block h-px w-10 bg-charcoal/35 shrink-0 translate-y-[-0.12em]" aria-hidden />
@@ -217,7 +216,7 @@ function HomeSection() {
               </span>
             </p>
           </Reveal>
-          <h1 className="editorial-h mt-8 md:mt-10 text-[clamp(2rem,8vw,6rem)] text-charcoal leading-[1.05]">
+          <h1 className="editorial-h mt-8 md:mt-10 text-[clamp(2rem,8vw,6rem)] text-charcoal leading-[1.05] text-balance">
             <SplitWord text={t("home.tagline")} />
           </h1>
           <Reveal delay={0.25}>
@@ -225,32 +224,12 @@ function HomeSection() {
               <ParagraphBlock keys={["home.p1", "home.p2", "home.p3"]} />
             </div>
           </Reveal>
-        </div>
-
-        <motion.div style={{ y: y1 }} className="col-span-12 md:col-span-5 mt-8 md:mt-24 relative">
-          <div className="relative aspect-[3/4] overflow-hidden">
-            <motion.img
-              src={heroFood}
-              alt={t("img.hero.alt")}
-              className="w-full h-full object-cover"
-              initial={{ scale: 1.15 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-          <motion.div
-            style={{ y: y2 }}
-            className="absolute left-2 md:-left-16 top-6 md:top-10 max-w-[14rem] md:max-w-[18rem] z-10 bg-ivory/90 backdrop-blur-sm p-5 md:p-6 border-l border-crimson/60"
-          >
-            <p className="font-serif italic text-base md:text-lg leading-snug text-charcoal/80">{t("footer.tagline")}</p>
-            <p className="label-eyebrow mt-3 text-charcoal/60">{t("contact.company")}</p>
-          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-3"
         aria-hidden
       >
         <motion.span
@@ -383,27 +362,37 @@ function WhySection() {
 
 /* ---------- brands ---------- */
 
+type BrandTitleVariant = "default" | "accent" | "italic";
+
 type BrandProps = {
-  index: string;
   nameKey: SiteMessageKey;
+  brandLogo: string;
+  logoAltKey: SiteMessageKey;
   paragraphKeys: readonly SiteMessageKey[];
   img: string;
   imgAltKey: SiteMessageKey;
   motif: React.ReactNode;
   align: "left" | "right";
-  accent?: boolean;
+  titleVariant?: BrandTitleVariant;
   rounded?: boolean;
 };
 
+const brandTitleClass: Record<BrandTitleVariant, string> = {
+  default: "text-charcoal",
+  accent: "text-crimson",
+  italic: "italic font-light text-charcoal/90",
+};
+
 function BrandChapter({
-  index,
   nameKey,
+  brandLogo,
+  logoAltKey,
   paragraphKeys,
   img,
   imgAltKey,
   motif,
   align,
-  accent,
+  titleVariant = "default",
   rounded,
 }: BrandProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -442,9 +431,19 @@ function BrandChapter({
           }`}
         >
           <Reveal>
-            <Eyebrow>{`${index} · ${t("brands.sectionTitle")}`}</Eyebrow>
+            <img
+              src={brandLogo}
+              alt={t(logoAltKey)}
+              width={320}
+              height={320}
+              loading="lazy"
+              decoding="async"
+              className="mb-5 md:mb-6 h-16 md:h-24 w-auto max-w-[min(100%,14rem)] object-contain object-left"
+            />
           </Reveal>
-          <h3 className={`editorial-h mt-5 md:mt-6 text-[clamp(2rem,9vw,6rem)] leading-[0.95] ${accent ? "text-crimson" : ""}`}>
+          <h3
+            className={`editorial-h text-[clamp(2rem,9vw,5.5rem)] leading-[0.95] ${brandTitleClass[titleVariant]}`}
+          >
             <SplitWord text={name} />
           </h3>
           <div className="mt-8 space-y-6 max-w-md text-charcoal/75 leading-[1.9]">
@@ -465,7 +464,7 @@ function BrandsSection() {
     <section id="brands" className="relative border-t border-border">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 pt-24 md:pt-32 pb-8 md:pb-12">
         <Reveal>
-          <Eyebrow>{t("brands.sectionTitle")}</Eyebrow>
+          <Eyebrow>{t("brands.eyebrow")}</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="editorial-h mt-6 md:mt-8 text-[clamp(2.25rem,9vw,7rem)] leading-[0.95] max-w-5xl">
@@ -478,8 +477,9 @@ function BrandsSection() {
       </div>
 
       <BrandChapter
-        index="I"
         nameKey="brands.bokchoy.name"
+        brandLogo={bokchoyLogo}
+        logoAltKey="brands.bokchoy.logoAlt"
         paragraphKeys={["brands.bokchoy.p1", "brands.bokchoy.p2", "brands.bokchoy.p3"]}
         img={bokchoyImg}
         imgAltKey="img.bokchoy.alt"
@@ -509,13 +509,14 @@ function BrandsSection() {
       />
 
       <BrandChapter
-        index="II"
         nameKey="brands.swooshi.name"
+        brandLogo={swooshiLogo}
+        logoAltKey="brands.swooshi.logoAlt"
         paragraphKeys={["brands.swooshi.p1", "brands.swooshi.p2", "brands.swooshi.p3"]}
         img={swooshiImg}
         imgAltKey="img.swooshi.alt"
         align="right"
-        accent
+        titleVariant="accent"
         motif={
           <svg viewBox="0 0 100 100" fill="none" aria-hidden>
             <motion.path
@@ -532,12 +533,14 @@ function BrandsSection() {
       />
 
       <BrandChapter
-        index="III"
         nameKey="brands.lilbuns.name"
+        brandLogo={lilbunsLogo}
+        logoAltKey="brands.lilbuns.logoAlt"
         paragraphKeys={["brands.lilbuns.p1", "brands.lilbuns.p2", "brands.lilbuns.p3"]}
         img={lilbunsImg}
         imgAltKey="img.lilbuns.alt"
         align="left"
+        titleVariant="italic"
         rounded
         motif={
           <svg viewBox="0 0 100 100" fill="none" aria-hidden>

@@ -69,10 +69,12 @@ const messages = {
   "why.4": "Innovative menus tailored to modern tastes",
   "why.5": "Customer-first philosophy",
 
+  "brands.eyebrow": "The portfolio",
   "brands.sectionTitle": "Our Brands",
   "brands.intro":
     "At Avadh Food and Beverages, each of our brands is built with a distinct identity, concept, and audience in mind. Together, they reflect our passion for variety, innovation, and memorable food experiences.",
 
+  "brands.bokchoy.logoAlt": "Bokchoy logo",
   "brands.bokchoy.name": "Bokchoy",
   "brands.bokchoy.p1":
     "Bokchoy is our tribute to the rich and diverse culinary traditions of Asia. Designed for those who appreciate bold flavors and authentic recipes, Bokchoy brings together the best of Chinese, Thai, and Pan-Asian cuisines under one roof.",
@@ -81,6 +83,7 @@ const messages = {
   "brands.bokchoy.p3":
     "Bokchoy stands out for its consistency, generous portions, and a menu that caters to both classic tastes and adventurous food lovers.",
 
+  "brands.swooshi.logoAlt": "Swooshi logo",
   "brands.swooshi.name": "Swooshi",
   "brands.swooshi.p1":
     "Swooshi is where creativity meets precision. Built for the modern, urban consumer, Swooshi reimagines sushi and Asian fusion cuisine with a contemporary twist.",
@@ -89,6 +92,7 @@ const messages = {
   "brands.swooshi.p3":
     "With a youthful and energetic brand personality, Swooshi is designed for people who enjoy experimenting with flavors and are always looking for something new and exciting.",
 
+  "brands.lilbuns.logoAlt": "Lil Buns logo",
   "brands.lilbuns.name": "Lil Buns",
   "brands.lilbuns.p1":
     "Lil Buns is all about comfort, indulgence, and fun. Created to deliver feel-good food that appeals to all age groups, the brand specializes in soft buns, loaded fillings, and crave-worthy snacks.",
