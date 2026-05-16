@@ -409,7 +409,7 @@ function BrandBlobImage({
         alt={alt}
         className="h-full w-full object-cover scale-[1.14]"
         initial={{ scale: 1.2 }}
-        whileInView={{ scale: 1.1 }}
+        whileInView={{ scale: 0.9 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
         loading="lazy"
