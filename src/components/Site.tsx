@@ -403,7 +403,9 @@ function BrandChapter({
     <div ref={ref} className="relative py-24 md:py-40 overflow-hidden">
       <div className="mx-auto max-w-[1500px] px-5 md:px-12 grid grid-cols-12 gap-6 md:gap-10 items-start">
         <div
-          className={`col-span-12 md:col-span-6 ${align === "right" ? "md:col-start-7 md:order-2" : ""}`}
+          className={`col-span-12 md:col-span-6 order-2 mt-10 md:mt-0 ${
+            align === "right" ? "md:col-start-7 md:order-2" : "md:order-none"
+          }`}
         >
           <motion.div style={{ y: imgY }} className="relative">
             <div className="relative aspect-[4/5] overflow-hidden brand-image-fade">
@@ -426,7 +428,7 @@ function BrandChapter({
 
         <motion.div
           style={{ y }}
-          className={`col-span-12 md:col-span-5 mt-10 md:mt-0 ${
+          className={`col-span-12 md:col-span-5 order-1 ${
             align === "right" ? "md:col-start-1 md:order-1" : "md:col-start-8"
           }`}
         >
